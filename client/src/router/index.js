@@ -4,6 +4,10 @@ import Hello from '../views/Home'
 import Login from '../views/Login'
 import auth from '../auth'
 
+
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 Vue.use(VueRouter)
 
 function requireAuth(to, from, next) {

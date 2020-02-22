@@ -3,7 +3,6 @@ package api
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 
 	"rest/api/controllers"
@@ -13,13 +12,6 @@ import (
 )
 
 var server = controllers.Server{}
-
-func Cors(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=ascii")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,access-control-allow-origin, access-control-allow-headers")
-	w.Write([]byte("Hello, World!"))
-}
 
 func Run() {
 

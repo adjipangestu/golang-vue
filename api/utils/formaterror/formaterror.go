@@ -21,5 +21,5 @@ func FormatError(err string) error {
 	if strings.Contains(err, "hashedPassword") {
 		return errors.New("Password salah...")
 	}
-	return errors.New("Incorrect Details")
+	return errors.New("Tidak ditemukan")
 }

@@ -9,6 +9,7 @@ import (
 	"rest/api/models"
 	"rest/api/responses"
 	"rest/api/utils/formaterror"
+
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -38,7 +39,6 @@ func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
 	responses.JSON(w, http.StatusOK, map[string]string{
 		"token": token,
 	})

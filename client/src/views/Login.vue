@@ -9,7 +9,7 @@
         type="text"
         class="form-control"
         placeholder="Enter your username"
-        v-model="credentials.username"
+        v-model="credentials.email"
         v-on:keyup.enter="submit"
       />
     </div>
@@ -28,24 +28,21 @@
 
 <script>
 import auth from "../auth";
-
 export default {
-  data() {
-    return {
-      credentials: {
-        username: "",
-        password: ""
-      },
-      error: ""
-    };
-  },
+  data: () => ({
+    loading: true,
+    credentials: {
+      email: "",
+      password: ""
+    },
+    error: ""
+  }),
   methods: {
     submit() {
       var credentials = {
-        username: this.credentials.username,
+        email: this.credentials.email,
         password: this.credentials.password
       };
-
       auth.login(this, credentials, "home");
     }
   }

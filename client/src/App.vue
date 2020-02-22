@@ -17,6 +17,11 @@
               <router-link to="/login">Login</router-link>
             </a>
           </li>
+          <li v-if="isAuthenticated()">
+            <a class="nav-link">
+              <router-link to="logout" @click.native="logout()">Logout</router-link>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

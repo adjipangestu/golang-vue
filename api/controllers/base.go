@@ -12,6 +12,8 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
 
 	"rest/api/models"
+
+	"github.com/rs/cors"
 )
 
 type Server struct {
@@ -47,11 +49,11 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 	server.DB.Debug().AutoMigrate(&models.User{}, &models.Post{}) //database migration
 
 	server.Router = mux.NewRouter()
-
 	server.initializeRoutes()
 }
 
 func (server *Server) Run(addr string) {
-	fmt.Println("Listening to port 8080")
-	log.Fatal(http.ListenAndServe(addr, server.Router))
+	fmt.Println("Listening to port 8000")
+	handler := cors.Default().Handler(server.Router)
+	log.Fatal(http.ListenAndServe(addr, handler))
 }
